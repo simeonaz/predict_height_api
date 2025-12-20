@@ -3,8 +3,18 @@ import numpy as np
 from pydantic import BaseModel
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# Configurer CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # Origine de l'application Vue.js
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Charger le modèle de régression linéaire
 with open("model_taille.pkl", "rb") as f:
