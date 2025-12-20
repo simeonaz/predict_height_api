@@ -21,7 +21,11 @@ class AgeInput(BaseModel):
 #     return {"Hello": "World"}
 
 
-@app.post("/predict", tags=["Prédiction de la taille"])
+@app.post(
+    "/predict",
+    tags=["Prédiction de la taille"],
+    description="Prédit la taille en fonction de l'âge.",
+)
 def predict_taille(input_data: AgeInput):
     age = np.array([[input_data.age]])
     taille_predite = model.predict(age)[0]
