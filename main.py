@@ -10,7 +10,10 @@ app = FastAPI()
 # Configurer CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Origine de l'application Vue.js
+    allow_origins=[
+        "http://localhost:5173",
+        "https://predict-height-simeon-azogbonon.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
