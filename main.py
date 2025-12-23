@@ -34,6 +34,11 @@ class AgeInput(BaseModel):
 #     return {"Hello": "World"}
 
 
+@app.get("/ping")
+def ping():
+    return {"status": "alive"}
+
+
 @app.post(
     "/predict",
     tags=["Prédiction de la taille"],
