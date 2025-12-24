@@ -34,7 +34,10 @@ class AgeInput(BaseModel):
 #     return {"Hello": "World"}
 
 
-@app.get("/ping")
+@app.get(
+    "/ping",
+    tags=["Maintenir l'app active"],
+)
 def ping():
     return {"status": "alive"}
 
@@ -44,7 +47,7 @@ def ping():
     tags=["Prédiction de la taille"],
     description="Prédit la taille en fonction de l'âge.",
 )
-def predict_taille(input_data: AgeInput):
+def predict_height(input_data: AgeInput):
     age = np.array([[input_data.age]])
     taille_predite = model.predict(age)[0]
     return {"age": input_data.age, "taille_predite": round(taille_predite, 2)}
